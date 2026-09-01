@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Instagram Friends Only",
-  "version": "0.1.0",
-  "description": "A calmer Instagram experience focused on friends and messages.",
+  "version": "0.2.1",
+  "description": "Keep messages, followed posts, and stories while hiding Instagram recommendations, Reels, and Explore.",
   "permissions": ["storage", "tabs"],
   "host_permissions": ["https://www.instagram.com/*"],
   "action": {

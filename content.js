@@ -11,6 +11,7 @@ const UNWANTED_POST_MARKERS = [
 
 let focusEnabled = true
 let observer
+let applyTimer
 
 function normalizePath(href) {
   try {
@@ -53,13 +54,36 @@ function applyFriendsOnlyMode() {
   document.querySelectorAll('main article').forEach((article) => {
     if (isRecommendedPost(article)) article.dataset.friendsOnlyHidden = 'true'
   })
+
+  if (document.body) {
+    let badge = document.getElementById('friends-only-badge')
+    if (!badge) {
+      badge = document.createElement('div')
+      badge.id = 'friends-only-badge'
+      document.body.appendChild(badge)
+    }
+    badge.textContent = window.location.pathname.startsWith('/direct/')
+      ? 'Friends Only · messages'
+      : 'Friends Only · followed feed'
+  }
+}
+
+function scheduleFriendsOnlyMode() {
+  window.clearTimeout(applyTimer)
+  applyTimer = window.setTimeout(applyFriendsOnlyMode, 300)
 }
 
 function beginWatching() {
   observer?.disconnect()
-  observer = new MutationObserver(applyFriendsOnlyMode)
-  observer.observe(document.documentElement, { childList: true, subtree: true })
-  applyFriendsOnlyMode()
+  observer = new MutationObserver(scheduleFriendsOnlyMode)
+
+  const start = () => {
+    observer.observe(document.documentElement, { childList: true, subtree: true })
+    scheduleFriendsOnlyMode()
+  }
+
+  if (document.documentElement) start()
+  else document.addEventListener('DOMContentLoaded', start, { once: true })
 }
 
 chrome.storage.local.get({ focusEnabled: true }, ({ focusEnabled: storedValue }) => {
@@ -70,7 +94,7 @@ chrome.storage.local.get({ focusEnabled: true }, ({ focusEnabled: storedValue })
 chrome.storage.onChanged.addListener((changes, area) => {
   if (area !== 'local' || !changes.focusEnabled) return
   focusEnabled = changes.focusEnabled.newValue
-  applyFriendsOnlyMode()
+  scheduleFriendsOnlyMode()
 })
 
-window.addEventListener('popstate', applyFriendsOnlyMode)
+window.addEventListener('popstate', scheduleFriendsOnlyMode)
