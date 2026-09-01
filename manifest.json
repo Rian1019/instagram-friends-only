@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "Instagram Friends Only",
+  "version": "0.1.0",
+  "description": "A calmer Instagram experience focused on friends and messages.",
+  "permissions": ["storage", "tabs"],
+  "host_permissions": ["https://www.instagram.com/*"],
+  "action": {
+    "default_title": "Instagram Friends Only",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.instagram.com/*"],
+      "css": ["content.css"],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ]
+}

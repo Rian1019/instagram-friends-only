@@ -1,0 +1,3 @@
+:root[data-friends-only-active="true"] [data-friends-only-hidden="true"] {
+  display: none !important;
+}
