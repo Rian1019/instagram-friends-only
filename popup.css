@@ -1,5 +1,29 @@
-:root { font-family: system-ui, sans-serif; color: #202520; background: #f5f7f4; }
-body { width: 260px; margin: 0; }
-main { padding: 16px; }
-h1 { margin: 0 0 14px; font-size: 16px; }
-button { width: 100%; height: 40px; border: 0; border-radius: 10px; background: #365e4a; color: white; font-weight: 700; cursor: pointer; }
+:root { font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color:#222622; background:#f6f7f4; }
+* { box-sizing:border-box; }
+body { width:310px;margin:0;background:#f6f7f4; }
+main { padding:17px; }
+header { display:flex;align-items:center;gap:10px;margin-bottom:16px; }
+.mark { width:34px;height:34px;display:grid;place-items:center;border-radius:12px 12px 12px 4px;background:#496b5b;color:white;font-size:13px;font-weight:800; }
+header>div:last-child { display:flex;flex-direction:column; }
+header strong { font-size:14px; }
+header span { margin-top:1px;color:#7a807a;font-size:9px; }
+.status-card { padding:11px;display:flex;align-items:flex-start;gap:9px;border:1px solid #e1e5df;border-radius:12px;background:white; }
+.status-dot { width:8px;height:8px;margin-top:3px;flex:none;border-radius:50%;background:#54a879; }
+.status-card div { display:flex;flex-direction:column; }
+.status-card strong { font-size:10px; }
+.status-card span:last-child { margin-top:3px;color:#798078;font-size:8.5px; }
+button { width:100%;height:40px;border:0;border-radius:11px;font-weight:700;font-size:10px;cursor:pointer; }
+.primary { margin-top:12px;display:flex;align-items:center;justify-content:center;gap:8px;background:#253129;color:white; }
+.primary span { font-size:16px;line-height:1; }
+.shortcut-row { display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:7px; }
+.secondary { border:1px solid #dfe3dd;background:white;color:#59615a; }
+.toggle-row { position:relative;margin-top:14px;padding:12px 50px 12px 3px;display:block;border-top:1px solid #e2e5e0;cursor:pointer; }
+.toggle-row div { display:flex;flex-direction:column; }
+.toggle-row strong { font-size:10px; }
+.toggle-row span { margin-top:3px;color:#798078;font-size:8.5px;line-height:1.4; }
+.toggle-row input { position:absolute;opacity:0;pointer-events:none; }
+.toggle-row i { position:absolute;right:2px;top:16px;width:36px;height:21px;border-radius:12px;background:#ccd1cc;transition:.18s; }
+.toggle-row i::after { content:"";position:absolute;left:3px;top:3px;width:15px;height:15px;border-radius:50%;background:white;box-shadow:0 1px 4px rgba(0,0,0,.17);transition:.18s; }
+.toggle-row input:checked+i { background:#496b5b; }
+.toggle-row input:checked+i::after { transform:translateX(15px); }
+footer { padding-top:10px;border-top:1px solid #e2e5e0;color:#929791;text-align:center;font-size:7.5px; }

@@ -8,8 +8,29 @@
   </head>
   <body>
     <main>
-      <h1>Friends Only</h1>
-      <button id="open-inbox">Open messages</button>
+      <header>
+        <div class="mark">F</div>
+        <div><strong>Friends Only</strong><span>for Instagram</span></div>
+      </header>
+
+      <section class="status-card">
+        <span class="status-dot"></span>
+        <div><strong>Personal accounts supported</strong><span>You sign in directly on instagram.com.</span></div>
+      </section>
+
+      <button id="open-home" class="primary">Friends feed & stories <span>→</span></button>
+      <div class="shortcut-row">
+        <button id="open-inbox" class="secondary">Messages</button>
+        <button id="open-requests" class="secondary">Requests</button>
+      </div>
+
+      <label class="toggle-row">
+        <div><strong>Friends-only mode</strong><span>Keep followed posts and stories; hide recommendations, ads, Reels, and Explore</span></div>
+        <input id="focus-toggle" type="checkbox" />
+        <i></i>
+      </label>
+
+      <footer>The extension does not read passwords, cookies, or messages.</footer>
     </main>
     <script src="popup.js"></script>
   </body>
