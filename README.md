@@ -13,6 +13,7 @@ A small Chrome/Edge extension that keeps Instagram focused on people you follow.
 
 - Posts labeled Suggested or Recommended
 - Sponsored posts
+- Unlabeled posts whose header offers a **Follow** action
 - Reels and Explore navigation
 
 “Friends” means accounts followed by the signed-in user. Instagram does not expose its private Close Friends membership list to browser extensions.
@@ -41,6 +42,6 @@ Open `chrome://extensions`, press the extension's reload icon, and then reload t
 
 ## Limitations
 
-Instagram changes its markup frequently. Filtering relies on visible English labels such as “Suggested for you” and “Sponsored,” so recommendations using different labels or languages may occasionally appear. The extension deliberately filters only individual `article` elements to avoid hiding the whole feed.
+Instagram changes its markup frequently. Filtering relies on visible English labels such as “Follow,” “Suggested for you,” and “Sponsored,” so recommendations using different labels or languages may occasionally appear. Feed articles are hidden before paint and revealed only after classification, preventing non-friend posts from flashing briefly. The extension deliberately filters only individual `article` elements to avoid hiding the whole feed.
 
 This project is independent and is not affiliated with or endorsed by Instagram or Meta.

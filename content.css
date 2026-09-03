@@ -2,6 +2,12 @@
   display: none !important;
 }
 
+/* Feed articles stay hidden until the content script has classified them.
+   This prevents recommended content from flashing before it is removed. */
+:root[data-friends-only-active="true"] main article:not([data-friends-only-state="allowed"]) {
+  display: none !important;
+}
+
 #friends-only-badge {
   position: fixed;
   z-index: 2147483647;
